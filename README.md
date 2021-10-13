@@ -1,2 +1,2 @@
 # Matematica100
- Projeto em javascript
+ Projeto pra por em prática conhecimentos de HTML, CSS, JAVASCRIPT e versionamento de código.

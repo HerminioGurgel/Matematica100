@@ -7,13 +7,22 @@
     <title>Document</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
-<body>
+<body onload="focar()" onclick="gerarContas()">
     <header>
-        <h1>Matemática 100!</h1>
+        <h1>Matemática 100</h1>
     </header>
     <section>
-        <div id='esquerda'></div>
-        <div id='direita'></div>
+
+        <div id='esquerda'>
+            <input type="text" id="resolvido" disabled><br>
+            <input type="text" id="atual" disabled><br>
+            <input type="text" id="proximo" disabled>
+        </div>
+
+        <div id='direita'>
+            = <input type="text" id="resposta" maxlength="2">
+        </div>
     </section>
+    <script src="script.js"></script>
 </body>
 </html>

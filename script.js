@@ -13,6 +13,7 @@ let objSoma = {
     parcelaX: 0,
     parcelaY: 0,
     soma: 0,
+    resposta,
 
     geraConta() {
         this.parcelaX = this.geraNumero(0, 10)
@@ -28,6 +29,15 @@ let objSoma = {
 
     escreveConta() {
         return `${this.parcelaX} + ${this.parcelaY}`
+    },
+
+    escreveResposta(){
+        if(this.resposta == this.soma ){
+            new Audio("correct_sound_effect.mp3").play()
+            return `${this.parcelaX} + ${this.parcelaY} = ${this.soma} \u{2705}`
+        } else {
+            return `${this.parcelaX} + ${this.parcelaY} = ${this.resposta} \u{274c}`
+        }
     }
 }
 
@@ -62,11 +72,11 @@ Falta corrigir uma falha o maxlength do input respostaUsr que está causando uma
 */
 function checaResposta() {
     let tamanhoSoma = questoes[rodada].soma.toString().length
-    respostaUsr.maxlength = tamanhoSoma
+//    respostaUsr.maxlength = tamanhoSoma
     let tamanhoResUsr = respostaUsr.value.toString().length
 
     if (tamanhoSoma == tamanhoResUsr) {
-
+        questoes[rodada].resposta = respostaUsr.value
         if (respostaUsr.value == questoes[rodada].soma) {
             trocaQuestao()
         } else {
@@ -78,11 +88,11 @@ function checaResposta() {
 
 /*
 Função que rotaciona o painel lateral de questões
-Falta adicionar a resposta dada pelo usuário, já mostrando certo ou errado e adicionar um som que será tocado em caso de acerto ou erro
+Falta adicionar um som que será tocado em caso de erro
 */
 function trocaQuestao(){
     rodada++
-    resolvido.value = `${questoes[rodada - 1].escreveConta()}`
+    resolvido.value = `${questoes[rodada - 1].escreveResposta()}`
     atual.value = `${questoes[rodada].escreveConta()}`
     proxima.value = `${questoes[rodada + 1].escreveConta()}`
     focar()
